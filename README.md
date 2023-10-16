@@ -1,66 +1,16 @@
-## Foundry
+# assembly-stash
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This repository contains the lessons that I encountered while diving into the EVM. They're mostly either articles or tests to replicate certain EVM behaviour. 
 
-Foundry consists of:
+# EVM Behaviour
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- [`not` is a bitwise negation](./test/Not.t.sol)
+- [`mstore` will automatically pad to 32 bytes](./test/MstorePadding.t.sol)
 
-## Documentation
+# Articles
 
-https://book.getfoundry.sh/
+## Custom Errors
+- [How to return custom errors using assembly?](https://soliditylang.org/blog/2021/04/21/custom-errors/)
 
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## Dynamic Types
+- [How to return bytes using assembly?](https://ethereum.stackexchange.com/questions/130072/return-bytes-from-inline-assembly)
