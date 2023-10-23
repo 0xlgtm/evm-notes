@@ -6,16 +6,28 @@ import {Test, console2} from "forge-std/Test.sol";
 contract Mock {
     uint256 public a;
 
-    function storeIncomplete() public {
+    // In function parameters, bytes, bytesNN and string are padded right
+    // https://docs.soliditylang.org/en/v0.8.17/abi-spec.html#formal-specification-of-the-encoding
+    function argumentPadRight(bytes4 _bytes) public {
         assembly {
-            mstore(0, 0xa9059cbb)
-            sstore(0, mload(0)) // function selector for transfer
+            mstore(0, _bytes)
+            sstore(0, mload(0))
+        }
+    }
+    
+    // everything else is padded left
+    // https://docs.soliditylang.org/en/v0.8.17/abi-spec.html#formal-specification-of-the-encoding
+    function argumentPadLeft(uint16 _a) public {
+        assembly {
+            mstore(0, _a)
+            sstore(0, mload(0))
         }
     }
 
-    function storeComplete() public {
-        assembly{
-            mstore(0, 0xa9059cbb00000000000000000000000000000000000000000000000000000000)
+    // But in Yul, it is always padded left
+    function yulPadLeft() public {
+        assembly {
+            mstore(0, 0xa9059cbb) // function selector for transfer
             sstore(0, mload(0))
         }
     }
@@ -31,21 +43,18 @@ contract MstorePaddingTest is Test {
         mock = new Mock();
     }
 
-    function test_storeIncomplete() public {
-        // Let's say hypothetically you wanted to store the function selector to execute some code.
-        // However when you call mstore(0, 0xa9059cbb), the mstore opcode is storing 32 bytes but 
-        // the selector only has 4 bytes so the compiler will automatically pad 0s on the left 
-        // i.e. you're storing 0x00000000000000000000000000000000000000000000000000000000a9059cbb
-        mock.storeIncomplete();
-        assertNotEq(mock.a(), b);
+    function test_ArgPadRight(bytes4 _b) public {
+        mock.argumentPadRight(_b);
+        assertEq(mock.a(), uint256(bytes32(_b)));
+    }
+
+    function test_ArgPadLeft(uint16 _a) public {
+        mock.argumentPadLeft(_a);
+        assertEq(mock.a(), _a);
+    }
+
+    function test_YulPadLeft() public {
+        mock.yulPadLeft();
         assertEq(mock.a(), 0x00000000000000000000000000000000000000000000000000000000a9059cbb);
     }
-
-    function test_storeComplete() public {
-        // In order to store it properly, you need to manually pad the 0s on the right
-        mock.storeComplete();
-        assertEq(mock.a(), b);
-    }
-
-    
 }
