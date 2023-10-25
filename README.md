@@ -14,3 +14,4 @@ This repository contains the lessons that I encountered while diving into the EV
 
 ## Dynamic Types
 - [How to return bytes using assembly?](https://ethereum.stackexchange.com/questions/130072/return-bytes-from-inline-assembly)
+- [How dynamic types are encoded](https://docs.soliditylang.org/en/latest/abi-spec.html#use-of-dynamic-types)
