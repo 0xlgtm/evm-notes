@@ -1,17 +1,21 @@
-# assembly-stash
+# evm-notes
 
-This repository contains the lessons that I encountered while diving into the EVM. They're mostly either articles or tests to replicate certain EVM behaviour. 
+This repository contains code repro of the issues that I've encountered while diving into the EVM. I've also added a list of helpful resources that have helped me on my exploration.
 
 # EVM Behaviour
-
 - [`not` is a bitwise negation](./test/Not.t.sol)
-- [`mstore` will automatically pad to 32 bytes](./test/MstorePadding.t.sol)
+- [`mstore` will automatically pad left to 32 bytes](./test/MstorePadding.t.sol)
 
-# Articles
-
-## Custom Errors
+# Resources
+## Assembly How-tos
 - [How to return custom errors using assembly?](https://soliditylang.org/blog/2021/04/21/custom-errors/)
-
-## Dynamic Types
 - [How to return bytes using assembly?](https://ethereum.stackexchange.com/questions/130072/return-bytes-from-inline-assembly)
-- [How dynamic types are encoded](https://docs.soliditylang.org/en/latest/abi-spec.html#use-of-dynamic-types)
+- [How are dynamic types encoded?](https://docs.soliditylang.org/en/latest/abi-spec.html#use-of-dynamic-types)
+
+## Assembly Tricks
+- [Solady](https://github.com/Vectorized/solady/)
+
+## Gas Optimization
+- [Beskay's Gas Guide](https://github.com/beskay/gas-guide/tree/main)
+- [RareSkills' Book of Gas Optimization](https://www.rareskills.io/post/gas-optimization)
+- [0xKalzak's Optimization Iceberg](https://snappify.com/view/f9a681c7-834c-467e-b34d-5ad443a893f2)
