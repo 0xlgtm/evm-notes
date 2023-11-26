@@ -1,6 +1,6 @@
 # evm-notes
 
-This repository contains code repro of the issues that I've encountered while diving into the EVM. I've also added a list of helpful resources that have helped me on my exploration.
+This repository contains code repro of the issues that I've encountered while diving into the EVM. I've also added a list of useful resources that have helped me on my exploration.
 
 # EVM Behaviour
 - [`not` is a bitwise negation](./test/Not.t.sol)
