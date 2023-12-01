@@ -5,13 +5,14 @@ This repository contains code repro of the issues that I've encountered while di
 # EVM Behaviour
 - [`not` is a bitwise negation](./test/Not.t.sol)
 - [`mstore` will automatically pad left to 32 bytes](./test/MstorePadding.t.sol)
+- [Automatic solidity packing starts from the right](https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy-3ea)
+- [Left vs right pad when casting different types](https://www.tutorialspoint.com/solidity/solidity_conversions.html)
 
 # Resources
 ## Assembly How-tos
 - [How to return custom errors using assembly?](https://soliditylang.org/blog/2021/04/21/custom-errors/)
 - [How to return bytes using assembly?](https://ethereum.stackexchange.com/questions/130072/return-bytes-from-inline-assembly)
 - [How are dynamic types encoded?](https://docs.soliditylang.org/en/latest/abi-spec.html#use-of-dynamic-types)
-
 
 ## EVM and Assembly
 - [evm.codes](https://evm.codes)
