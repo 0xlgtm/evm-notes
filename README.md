@@ -12,8 +12,9 @@ This repository contains code repro of the issues that I've encountered while di
 - [How to return bytes using assembly?](https://ethereum.stackexchange.com/questions/130072/return-bytes-from-inline-assembly)
 - [How are dynamic types encoded?](https://docs.soliditylang.org/en/latest/abi-spec.html#use-of-dynamic-types)
 
-## Assembly Tricks
+## EVM and Assembly
 - [Solady](https://github.com/Vectorized/solady/)
+- [Noxx3xxon's EVM handbook](https://noxx3xxon.notion.site/noxx3xxon/The-EVM-Handbook-bb38e175cc404111a391907c4975426d)
 
 ## Gas Optimization
 - [Beskay's Gas Guide](https://github.com/beskay/gas-guide/tree/main)
