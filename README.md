@@ -5,7 +5,7 @@ This repository contains code repro of the issues that I've encountered while di
 # EVM Behaviour
 - [`not` is a bitwise negation](./test/Not.t.sol)
 - [`mstore` will automatically pad left to 32 bytes](./test/MstorePadding.t.sol)
-- [Automatic solidity packing starts from the right](https://noxx.substack.com/p/evm-deep-dives-the-path-to-shadowy-3ea)
+- [Solidity packs variables starting from the right](./test/AutoPacking.t.sol)
 - [Left vs right pad when casting different types](https://www.tutorialspoint.com/solidity/solidity_conversions.html)
 
 # Resources
