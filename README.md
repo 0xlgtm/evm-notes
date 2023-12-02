@@ -6,7 +6,7 @@ This repository contains code repro of the issues that I've encountered while di
 - [`not` is a bitwise negation](./test/Not.t.sol)
 - [`mstore` will automatically pad left to 32 bytes](./test/MstorePadding.t.sol)
 - [Solidity packs variables starting from the right](./test/AutoPacking.t.sol)
-- [Left vs right pad when casting different types](https://www.tutorialspoint.com/solidity/solidity_conversions.html)
+- [Solidity type casting](./test/TypeCasting.t.sol)
 
 # Resources
 ## Assembly How-tos
