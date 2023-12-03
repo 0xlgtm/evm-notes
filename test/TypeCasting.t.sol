@@ -4,7 +4,8 @@ import {Test} from "forge-std/Test.sol";
 
 contract TypeCastingTest is Test {
     // https://docs.soliditylang.org/en/latest/types.html#explicit-conversions
-
+    // https://github.com/ethereum/solidity-examples/blob/master/docs/bytes/Bytes.md
+    
     // When downcasting uint, higher order bits are truncated.
     // When upcasting uint, 0s are padded to the right.
     function test_UintCast() public {
