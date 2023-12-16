@@ -29,7 +29,7 @@ contract Pack {
     }
 }
 
-contract AutoPackingTest is Test {
+contract PackRightFirstTest is Test {
 
     Pack pack;
 

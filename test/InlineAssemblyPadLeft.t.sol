@@ -6,12 +6,11 @@ import {Test} from "forge-std/Test.sol";
 contract Mock {
     uint256 public a;
 
-    // In function parameters, bytes, bytesNN and string are padded right
+    // When you use bytes, bytesNN and string as a paramter type, they are always padded right
     // https://docs.soliditylang.org/en/v0.8.17/abi-spec.html#formal-specification-of-the-encoding
     function argumentPadRight(bytes4 _bytes) public {
         assembly {
-            mstore(0, _bytes)
-            sstore(0, mload(0))
+            sstore(0, _bytes)
         }
     }
     
@@ -19,21 +18,19 @@ contract Mock {
     // https://docs.soliditylang.org/en/v0.8.17/abi-spec.html#formal-specification-of-the-encoding
     function argumentPadLeft(uint16 _a) public {
         assembly {
-            mstore(0, _a)
-            sstore(0, mload(0))
+            sstore(0, _a)
         }
     }
 
-    // But in Yul, it is always padded left
+    // But if you use it directly in assembly, it is always padded left
     function yulPadLeft() public {
         assembly {
-            mstore(0, 0xa9059cbb) // function selector for transfer
-            sstore(0, mload(0))
+            sstore(0, 0xa9059cbb)
         }
     }
 }
 
-contract MstorePaddingTest is Test {
+contract InlineAssemblyPadLeftTest is Test {
 
     Mock mock;
     // uint256(0xa9059cbb00000000000000000000000000000000000000000000000000000000)
@@ -43,17 +40,17 @@ contract MstorePaddingTest is Test {
         mock = new Mock();
     }
 
-    function test_ArgPadRight(bytes4 _b) public {
+    function test_ArgumentPadRight(bytes4 _b) public {
         mock.argumentPadRight(_b);
         assertEq(mock.a(), uint256(bytes32(_b)));
     }
 
-    function test_ArgPadLeft(uint16 _a) public {
+    function test_ArgumentPadLeft(uint16 _a) public {
         mock.argumentPadLeft(_a);
         assertEq(mock.a(), _a);
     }
 
-    function test_YulPadLeft() public {
+    function test_InlineAssemblyPadLeft() public {
         mock.yulPadLeft();
         assertEq(mock.a(), 0x00000000000000000000000000000000000000000000000000000000a9059cbb);
     }
