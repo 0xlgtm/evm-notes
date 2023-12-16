@@ -4,8 +4,8 @@ This repository contains code repro of the issues that I've encountered while di
 
 # EVM Behaviour
 - [`not` is a bitwise negation](./test/Not.t.sol)
-- [`mstore` will automatically pad left to 32 bytes](./test/MstorePadding.t.sol)
-- [Solidity packs variables starting from the right](./test/AutoPacking.t.sol)
+- [Inline assembly will always pad left to 32 bytes](./test/InlineAssemblyPadLeft.t.sol)
+- [Solidity packs variables from the right into a single slot](./test/PackRightFirst.t.sol)
 - [Solidity type casting](./test/TypeCasting.t.sol)
 
 # Resources
