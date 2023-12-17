@@ -3,33 +3,53 @@ pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
 
-contract InlineAssemblyPadLeftTest is Test {
-    uint256 val;
-    bytes4 transferSig = 0xa9059cbb;
+contract InlineAssemblyPadLeft {
+    uint256 public val;
+    bytes4 public transferSig = 0xa9059cbb;
 
     // When you use bytes, bytesNN and string as a paramter type, they are always padded right
     // https://docs.soliditylang.org/en/latest/abi-spec.html#formal-specification-of-the-encoding
-    function test_ArgumentPadRight(bytes4 some4Bytes) public {
+    function argumentPadRight(bytes4 someBytes4) public {
         assembly {
-            sstore(0, some4Bytes)
+            sstore(val.slot, someBytes4)
         }
-        assertEq(vm.load(address(this), 0), bytes32(some4Bytes));
     }
 
     // everything else is padded left
     // https://docs.soliditylang.org/en/v0.8.17/abi-spec.html#formal-specification-of-the-encoding
-    function test_ArgumentPadLeft(uint16 someUint16) public {
+    function argumentPadLeft(uint16 someUint16) public {
         assembly {
-            sstore(0, someUint16)
+            sstore(val.slot, someUint16)
         }
-        assertEq(vm.load(address(this), 0), bytes32(uint256(someUint16)));
     }
 
-    // But if you use it directly in assembly, it is always padded left
-    function test_InlineAssemblyPadLeft() public {
+    // But if you reference something directly in assembly, it is always padded left
+    function inlineAssemblyPadLeft() public {
         assembly {
-            sstore(0, sload(transferSig.slot))
+            sstore(val.slot, sload(transferSig.slot))
         }
-        assertEq(vm.load(address(this), 0), bytes32(uint256(uint32(transferSig))));
+    }
+}
+
+contract InlineAssemblyPadLeftTest is Test {
+    InlineAssemblyPadLeft example;
+
+    function setUp() public {
+        example = new InlineAssemblyPadLeft();
+    }
+
+    function test_ArgumentPadRight(bytes4 someBytes4) public {
+        example.argumentPadRight(someBytes4);
+        assertEq(bytes32(example.val()), bytes32(someBytes4));
+    }
+
+    function test_ArgumentPadLeft(uint16 someUint16) public {
+        example.argumentPadLeft(someUint16);
+        assertEq(example.val(), uint256(someUint16));
+    }
+
+    function test_InlineAssemblyPadLeft() public {
+        example.inlineAssemblyPadLeft();
+        assertEq(example.val(), uint256(uint32(example.transferSig())));
     }
 }
