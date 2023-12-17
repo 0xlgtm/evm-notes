@@ -5,20 +5,19 @@ import {Test} from "forge-std/Test.sol";
 contract TypeCastingTest is Test {
     // https://docs.soliditylang.org/en/latest/types.html#explicit-conversions
     // https://github.com/ethereum/solidity-examples/blob/master/docs/bytes/Bytes.md
-    
-    // When downcasting uint, higher order bits are truncated.
-    // When upcasting uint, 0s are padded to the right.
+
+    // When downcasting uint, higher order bits are truncated (left side).
+    // When upcasting uint, 0s are padded to the left.
     function test_UintCast() public {
         uint32 a = 0x12345678;
         uint16 b = uint16(a);
         assertEq(b, 0x5678);
         uint32 c = uint32(b);
-        assertEq(c, 0x00005678); 
+        assertEq(c, 0x00005678);
     }
 
-    // When downcasting bytesNN, lower order bits are truncated.
-    // When upcasting bytesNN, 0s are padded to the left.
-
+    // When downcasting bytesNN, lower order bits are truncated (right side).
+    // When upcasting bytesNN, 0s are padded to the right.
     function test_BytesNNCast() public {
         bytes2 a = 0x1234;
         bytes1 b = bytes1(a);
