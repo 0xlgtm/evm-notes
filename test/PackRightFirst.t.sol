@@ -1,61 +1,43 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.20;
 
-import {Test} from "forge-std/Test.sol";
+import {Test, console2} from "forge-std/Test.sol";
 
-contract Pack {
-    // As we are relying on solidity to automatically pack our variables for us
-    // into a single slot, it is important to understand the packing order.
-    // Solidity packs variables from the right.
-    // The right most bytes contain the value a because it is packed first
-    // and the left most bytes contain the value d because it is packed last i.e.
+contract PackRightFirst {
+    // If we are relying on the compiler to automatically pack our variables
+    // for us, it is important to know the order at which they are packed in a slot.
+    // Given the four storage variables below, the right most bytes contain
+    // the value a and the left most bytes contain the value d i.e.
     // 0xddddddddddddddddddddddddddddddddccccccccccccccccbbbbbbbbaaaaaaaa
     uint32 a;
     uint32 b;
     uint64 c;
     uint128 d;
 
-    function setValues(uint32 _a, uint32 _b, uint64 _c, uint128 _d) public {
+    function pack(uint32 _a, uint32 _b, uint64 _c, uint128 _d) public {
         a = _a;
         b = _b;
         c = _c;
         d = _d;
     }
-
-    function getValues() public returns(uint256 val) {
-        assembly {
-            val := sload(0) // Note that a.slot, b.slot, c.slot and d.slot all refers to slot 0.
-        }
-    }
 }
 
 contract PackRightFirstTest is Test {
-
-    Pack pack;
+    PackRightFirst example;
 
     function setUp() public {
-        pack = new Pack();
-    }
-    
-    function test_autoPack(uint32 _a, uint32 _b, uint64 _c, uint128 _d) public {
-
-        pack.setValues(_a, _b, _c, _d);
-
-        // Let's manually pack the variable mp.
-        uint256 mp;
-        assembly {
-            // Insert _d into mp
-            mp := or(mp, _d)
-            // Shift left by 64 bits to make space for _c
-            mp := shl(64, mp)
-            // Repeat for _c, _b and _a
-            mp := or(mp, _c)
-            mp := shl(32, mp)
-            mp := or(mp, _b)
-            mp := shl(32, mp)
-            mp := or(mp, _a)
-        }
-        assertEq(mp, pack.getValues());
+        example = new PackRightFirst();
     }
 
+    function test_AutoPack(uint32 _a, uint32 _b, uint64 _c, uint128 _d) public {
+        example.pack(_a, _b, _c, _d);
+
+        // Let's manually pack our variable
+        // Note: you need to cast _d to a uint256 before any shifting
+        // otherwise it'll use the type of uint128 and overflow when
+        // you try to shift 128 bits. The final value is then casted
+        // to uint256 before being assigned to packed.
+        uint256 packed = (((((uint256(_d) << 64) | _c) << 32) | _b) << 32) | _a;
+        assertEq(vm.load(address(example), 0), bytes32(packed));
+    }
 }
