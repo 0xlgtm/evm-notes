@@ -8,9 +8,8 @@ A collection of interesting findings I stumbled upon while exploring the EVM.
 - [When casting to a smaller / larger type, 0s are padded or truncated on either the left or right side depending on the type](./test/TypeCasting.t.sol)
 
 # Unconventional Gas Optimization
-- ["public variables are functions"](#)
-- ["uint256 parameter types are cheaper because overflow checks not required"](#)
-- ["packing into a struct is more expensive than not packing"](#)
+- [`uint256` parameter type is cheaper than `uint64`](./test/OverflowCheckOnParams.t.sol)
+- ["packing into a struct is more expensive than not packing"](./test/StructPacking.t.sol)
 
 # Assembly How-tos
 - [How to return custom errors using assembly?](https://soliditylang.org/blog/2021/04/21/custom-errors/)
