@@ -26,7 +26,9 @@ A collection of interesting findings I stumbled upon while exploring the EVM.
 - [RareSkills' Book of Gas Optimization](https://www.rareskills.io/post/gas-optimization)
 - [0xKalzak's Optimization Iceberg](https://snappify.com/view/f9a681c7-834c-467e-b34d-5ad443a893f2)
 
-# Explainer Threads
+# Random solidity tips
+- [Bit representation of signed integers](https://twitter.com/0xlgtm/status/1742369037706031215)
 
+# Explainer Threads
 1. <a id="1"></a> https://twitter.com/0xlgtm/status/1736345019660001495
 2. <a id="2"></a> https://twitter.com/0xlgtm/status/1736638254424981951
