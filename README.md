@@ -11,22 +11,22 @@ A collection of interesting findings I stumbled upon while exploring the EVM.
 - [`uint256` parameter type is cheaper than `uint64`](./test/OverflowCheckOnParams.t.sol) <sub>[1](#1)</sub>
 - [packing into a struct is more expensive than not packing](./test/StructPacking.t.sol) <sub>[2](#2)</sub>
 
-# Assembly How-tos
+# Assembly How-Tos
 - [How to return custom errors using assembly?](https://soliditylang.org/blog/2021/04/21/custom-errors/)
 - [How to return bytes using assembly?](https://ethereum.stackexchange.com/questions/130072/return-bytes-from-inline-assembly)
 - [How are dynamic types encoded?](https://docs.soliditylang.org/en/latest/abi-spec.html#use-of-dynamic-types)
 
-# EVM and Assembly resources
+# EVM and Assembly Resources
 - [evm.codes](https://evm.codes)
 - [Solady](https://github.com/Vectorized/solady/)
 - [Noxx3xxon's EVM handbook](https://noxx3xxon.notion.site/noxx3xxon/The-EVM-Handbook-bb38e175cc404111a391907c4975426d)
 
-# Gas Optimization resources
+# Gas Optimization Resources
 - [Beskay's Gas Guide](https://github.com/beskay/gas-guide/tree/main)
 - [RareSkills' Book of Gas Optimization](https://www.rareskills.io/post/gas-optimization)
 - [0xKalzak's Optimization Iceberg](https://snappify.com/view/f9a681c7-834c-467e-b34d-5ad443a893f2)
 
-# Random solidity tips
+# Random Solidity Tips
 - [Bit representation of signed integers](https://twitter.com/0xlgtm/status/1742369037706031215)
 
 # Explainer Threads
