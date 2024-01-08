@@ -15,6 +15,8 @@ A collection of interesting findings I stumbled upon while exploring the EVM.
 - [How to return custom errors using assembly?](https://soliditylang.org/blog/2021/04/21/custom-errors/)
 - [How to return bytes using assembly?](https://ethereum.stackexchange.com/questions/130072/return-bytes-from-inline-assembly)
 - [How are dynamic types encoded?](https://docs.soliditylang.org/en/latest/abi-spec.html#use-of-dynamic-types)
+- [How to represent signed integers in binary?](https://twitter.com/0xlgtm/status/1742369037706031215)
+- [How do calldata arrays save gas?](https://twitter.com/0xlgtm/status/1744209267090198564)
 
 # EVM and Assembly Resources
 - [evm.codes](https://evm.codes)
@@ -25,10 +27,6 @@ A collection of interesting findings I stumbled upon while exploring the EVM.
 - [Beskay's Gas Guide](https://github.com/beskay/gas-guide/tree/main)
 - [RareSkills' Book of Gas Optimization](https://www.rareskills.io/post/gas-optimization)
 - [0xKalzak's Optimization Iceberg](https://snappify.com/view/f9a681c7-834c-467e-b34d-5ad443a893f2)
-
-# Random Solidity Tips
-- [Bit representation of signed integers](https://twitter.com/0xlgtm/status/1742369037706031215)
-- [Calldata vs memory](https://twitter.com/0xlgtm/status/1744209267090198564)
 
 # Explainer Threads
 1. <a id="1"></a> https://twitter.com/0xlgtm/status/1736345019660001495
