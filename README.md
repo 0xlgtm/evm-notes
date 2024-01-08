@@ -28,6 +28,7 @@ A collection of interesting findings I stumbled upon while exploring the EVM.
 
 # Random Solidity Tips
 - [Bit representation of signed integers](https://twitter.com/0xlgtm/status/1742369037706031215)
+- [Calldata vs memory](https://twitter.com/0xlgtm/status/1744209267090198564)
 
 # Explainer Threads
 1. <a id="1"></a> https://twitter.com/0xlgtm/status/1736345019660001495
