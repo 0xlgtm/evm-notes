@@ -8,8 +8,8 @@ A collection of interesting findings I stumbled upon while exploring the EVM.
 - [When casting to a smaller / larger type, 0s are padded or truncated on either the left or right side depending on the type](./test/TypeCasting.t.sol)
 
 # Unconventional Gas Optimization
-- [`uint256` parameter type is cheaper than `uint64`](./test/OverflowCheckOnParams.t.sol) <sub>[1](#1)</sub>
-- [packing into a struct is more expensive than not packing](./test/StructPacking.t.sol) <sub>[2](#2)</sub>
+- [`uint256` parameter type is cheaper than `uint64`](./test/OverflowCheckOnParams.t.sol) <sub>[1](https://twitter.com/0xlgtm/status/1736345019660001495)</sub>
+- [packing into a struct is more expensive than not packing](./test/StructPacking.t.sol) <sub>[2](https://twitter.com/0xlgtm/status/1736638254424981951)</sub>
 
 # Assembly How-Tos
 - [How to return custom errors using assembly?](https://soliditylang.org/blog/2021/04/21/custom-errors/)
@@ -27,7 +27,3 @@ A collection of interesting findings I stumbled upon while exploring the EVM.
 - [Beskay's Gas Guide](https://github.com/beskay/gas-guide/tree/main)
 - [RareSkills' Book of Gas Optimization](https://www.rareskills.io/post/gas-optimization)
 - [0xKalzak's Optimization Iceberg](https://snappify.com/view/f9a681c7-834c-467e-b34d-5ad443a893f2)
-
-# Explainer Threads
-1. <a id="1"></a> https://twitter.com/0xlgtm/status/1736345019660001495
-2. <a id="2"></a> https://twitter.com/0xlgtm/status/1736638254424981951
